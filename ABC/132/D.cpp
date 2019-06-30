@@ -1,3 +1,5 @@
+// nCrの記憶配列から解く
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -12,6 +14,7 @@ vector<vector<long long> > comb(int n) {
   for ( int j = 1; j < v.size(); j++ ) {
     for ( int k = 1; k < j; k++ ) {
       v[j][k] = (v[j-1][k-1] + v[j-1][k]);
+      v[j][k] %= mod;
     }
   }
   return v;
