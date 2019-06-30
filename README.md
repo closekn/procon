@@ -12,9 +12,9 @@ AtCoder参加記録
 
 ## ディレクトリ
 
-- ABC
+- ABC (AtCoder Beginner Contest)
   - 000 (contest number)
-- AGC
+- AGC (AtCoder Grand Contest)
   - 000 (contest number)
 - M_SOLUTIONS
   - yyyymmdd (year month day)
