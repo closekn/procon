@@ -1,8 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-long long mod = 1e9 + 7;
-
+//-- nCr = v[n][r] の 記憶配列作成
 vector<vector<long long> > comb(int n) {
   vector<vector<long long> > v(n+1, vector<long long>(n+1, 0));
   for ( int i = 0; i < v.size(); i++ ) {
@@ -17,19 +16,10 @@ vector<vector<long long> > comb(int n) {
   return v;
 }
 
+//-- nCr = nCr(n, r) の 関数
+
 int main() {
-  int n, k;
-  cin >> n >> k;
-  
-  vector<vector<long long> > c = comb(n);
-
-  for ( int i = 1; i <= k; i++ ) {
-    if ( i+1 <= n-k+2 ) {
-      cout << ( c[k-1][i-1] * c[n-k+1][i] ) % mod << endl;
-    } else {
-      cout << 0 << endl;
-    }
-  }
-
+  vector<vector<long long> > c = comb(6);
+  cout << c[6][3] << endl;
   return 0;
 }
