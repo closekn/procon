@@ -16,9 +16,11 @@ AtCoder参加記録
   - 000 (contest number)
 - AGC (AtCoder Grand Contest)
   - 000 (contest number)
-- JapanSaikyoStudent (日本最強プログラマー学生選手権)
-  - 00 (第00回)
+- JSC (Japan Student Championship)
+  - 00 (contest number)
+    - primary
 - M_SOLUTIONS
   - yyyymmdd (year month day)
-- diverta_2019_programming_contest
-  - 000 (contest number)
+- diverta_programming_contest
+  - yyyy (year)
+    - 000 (contest number)
