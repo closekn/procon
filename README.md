@@ -24,3 +24,5 @@ AtCoder参加記録
 - diverta_programming_contest
   - yyyy (year)
     - 000 (contest number)
+- NIKKEI (National uniform programming king)
+  - 00 (contest number)

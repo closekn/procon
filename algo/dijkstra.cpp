@@ -44,7 +44,7 @@ int main() {
     cin >> V;
     int E;
     cin >> E;
-    for (int i=0; i<E; ++i) {
+    for ( int i = 0; i < E; i++ ) {
       int a, b, c;
       cin >> a >> b >> c;
       edge e = {b, c};
