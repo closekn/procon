@@ -18,11 +18,7 @@ AtCoder参加記録
   - 000 (contest number)
 - JSC (Japan Student Championship)
   - 00 (contest number)
-    - primary
-- M_SOLUTIONS
-  - yyyymmdd (year month day)
-- diverta_programming_contest
-  - yyyy (year)
-    - 000 (contest number)
-- NIKKEI (National uniform programming king)
-  - 00 (contest number)
+- company (company's contest)
+  - M_SOLUTIONS
+  - diverta_programming_contest
+  - NIKKEI (National uniform programming king)

@@ -1,4 +1,12 @@
 *.exe
-*.out
 *.stackdump
 *\~
+
+# mac
+.DS_Store
+
+# c++
+*.out
+
+# online-judge-tools
+*.in
