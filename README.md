@@ -13,11 +13,9 @@ AtCoder参加記録
 ## ディレクトリ
 
 - ABC (AtCoder Beginner Contest)
-  - 000 (contest number)
 - AGC (AtCoder Grand Contest)
-  - 000 (contest number)
 - JSC (Japan Student Championship)
-  - 00 (contest number)
+- PAST (アルゴリズム実技検定)
 - company (company's contest)
   - M_SOLUTIONS
   - diverta_programming_contest
