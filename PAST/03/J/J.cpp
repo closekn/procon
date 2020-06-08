@@ -9,17 +9,22 @@ int main() {
 
   while ( m-- > 0 ) {
     int a;
+    int ate;
     cin >> a;
-    bool eat = false;
-    for ( int i = 0; i < n; i++ ) {
-      if ( a > y[i] ) {
-        eat = true;
-        y[i] = a;
-        cout << i+1 << endl;
-        break;
-      }
+
+    int left = -1;
+    int right = n;
+    while ( right - left > 1 ) {
+      int mid = left + (right - left) / 2;
+      if ( y[mid] < a ) { right = mid; } else { left = mid; }
     }
-    if ( ! eat ) { cout << -1 << endl; }
+    if ( right == n ) {
+      ate = -1;
+    } else {
+      ate = right+1;
+      y[right] = a;
+    }
+    cout << ate << endl;
   }
 
   return 0;

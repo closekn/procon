@@ -4,40 +4,35 @@ using namespace std;
 int main() {
   int n, q;
   cin >> n >> q;
-  vector<vector<int>> a;
+
+  bool trans = false;
+  long long line[n];
+  long long row[n];
   for ( int i = 0; i < n; i++ ) {
-    vector<int> t;
-    a.push_back(t);
-    for ( int j = 0; j < n; j++ ) {
-      a[i].push_back(n * i + j);
-    }
+    line[i] = i;
+    row[i] = i;
   }
 
   while ( q-- > 0 ) {
     int mode;
     cin >> mode;
     if ( mode == 3 ) {
-      for ( int i = 0; i < n; i++ ) {
-        for ( int j = i+1; j < n; j++ ) {
-          swap(a[i][j], a[j][i]);
-        }
-      }
+      trans = !trans;
       continue;
     }
     int A, B;
     cin >> A >> B;
     A--; B--;
-    if ( mode == 4 ) { cout << a[A][B] << endl; }
+    if ( mode == 4 ) {
+      long long ans = ( !trans ) ? n * line[A] + row[B] : n * line[B] + row[A];
+      cout << ans << endl;
+    }
     if ( A == B ) { continue; }
     if ( mode == 1 ) {
-      for ( int j = 0; j < n; j++ ) {
-        swap(a[A][j], a[B][j]);
-      }
+      if ( !trans ) { swap(line[A], line[B]); } else { swap(row[A], row[B]); }
     }
     if ( mode == 2 ) {
-      for ( int i = 0; i < n; i++ ) {
-        swap(a[i][A], a[i][B]);
-      }
+      if ( !trans ) { swap(row[A], row[B]); } else { swap(line[A], line[B]); }
     }
   }
 
