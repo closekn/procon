@@ -1,5 +1,6 @@
-#include <vector>
 #include <algorithm>
+#include <vector>
+using namespace std;
 
 struct UnionFind {
   vector<int> par;

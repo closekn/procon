@@ -1,7 +1,14 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 //-- nCr = v[n][r] の 記憶配列作成
+/**
+ * @fn nにおけるコンビネーション結果を作成
+ * @bref nCrにおける指定nに対する各rの記憶配列作成 (nCr = v[n][r])
+ * @param (n) nCrにおけるn
+ * @return nCr = v[n][r] となるv
+ */
 vector<vector<long long> > comb(int n) {
   vector<vector<long long> > v(n+1, vector<long long>(n+1, 0));
   for ( int i = 0; i < v.size(); i++ ) {
@@ -14,12 +21,4 @@ vector<vector<long long> > comb(int n) {
     }
   }
   return v;
-}
-
-//-- nCr = nCr(n, r) の 関数
-
-int main() {
-  vector<vector<long long> > c = comb(6);
-  cout << c[6][3] << endl;
-  return 0;
 }

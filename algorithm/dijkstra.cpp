@@ -11,13 +11,17 @@ struct edge {
   int cost;
 };
 
-// <最短距離, 頂点の番号>
-using P = pair<int, int>;
+using P = pair<int, int>; // <最短距離, 頂点の番号>
 
-int V;
-vector<edge> G[MAX_V];
-int d[MAX_V];
+int V;                  // ノード数
+vector<edge> G[MAX_V];  // グラフ
+int d[MAX_V];           // sから各頂点までの距離
 
+/**
+ * @fn ダイクストラ
+ * @bref 上記変数'd'に各始点から各終点までの距離格納
+ * @param (s) 始点ノード
+ */
 void dijkstra(int s) {
   priority_queue<P, vector<P>, greater<P> > que;
   fill(d, d+V, INF);
@@ -38,22 +42,4 @@ void dijkstra(int s) {
       }
     }
   }
-}
-
-int main() {
-    cin >> V;
-    int E;
-    cin >> E;
-    for ( int i = 0; i < E; i++ ) {
-      int a, b, c;
-      cin >> a >> b >> c;
-      edge e = {b, c};
-      G[a].push_back(e);
-    }
-    // 0始点の全頂点探索
-    dijkstra(0);
-    for ( int i = 0; i < V; i++ ) {
-      if ( d[i] != INF )
-        cout << "0から" << i << "までのコスト: " << d[i] << endl;
-    }
 }

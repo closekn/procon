@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <vector>
+using namespace std;
 
 int INF = 1e+9;
 #define MAX_V 300
@@ -8,13 +10,15 @@ struct edge {
   int cost;
 };
 
-int V;
-vector<edge> G[MAX_V];
-int d[MAX_V][MAX_V];
+int V;                  // ノード数
+vector<edge> G[MAX_V];  // グラフ
+int d[MAX_V][MAX_V];    // 第一添字頂点から第二添字頂点までの距離
 
-
+/**
+ * @fn ワーシャルフロイド
+ * @bref 上記変数'd'に各始点から各終点までの距離格納
+ */
 void warshall_floyd() {
-
   // 初期経路
   for ( int i = 0; i < V; i++ ) {
     fill(d, d+V, INF);

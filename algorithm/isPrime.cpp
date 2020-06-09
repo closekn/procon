@@ -1,3 +1,11 @@
+#include <cmath>
+using namespace std;
+
+/**
+ * @fn 素数判定
+ * @param (num) 判定対象の数
+ * @return numが素数かの真偽値
+ */
 bool isPrime(int num) {
   if (num < 2)      { return false; }
   if (num == 2)     { return true; }
@@ -8,12 +16,5 @@ bool isPrime(int num) {
     if ( num % i == 0 ) { return false; }
   }
 
-  return true;
-}
-
-bool isPrime(int x) {
-  for ( int i = 2; i * i <= x; i++ ) {
-    if ( x%i == 0 ) { return false; }
-  }
   return true;
 }
