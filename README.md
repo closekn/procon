@@ -1,22 +1,16 @@
-# AtCoder
+# procon
 
-AtCoder参加記録
+Programming contest related
 
-## プロフィール
+## Directory
 
-[closekn](https://atcoder.jp/users/closekn)
+### Contest
 
-## 更新
+- AtCoder
+- CodeForces
+- yukicoder
+- ICPC (International Collegiate Programming Contest)
 
-コンテスト参加後に更新したり、過去コンテストの問題を解いたときに更新します。
+### Library
 
-## ディレクトリ
-
-- ABC (AtCoder Beginner Contest)
-- AGC (AtCoder Grand Contest)
-- JSC (Japan Student Championship)
-- PAST (アルゴリズム実技検定)
-- company (company's contest)
-  - M_SOLUTIONS
-  - diverta_programming_contest
-  - NIKKEI (National uniform programming king)
+- algo
