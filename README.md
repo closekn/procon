@@ -14,4 +14,4 @@ Programming contest related
 
 ### Library
 
-- algo
+- algorithm
