@@ -2,6 +2,14 @@
 #include <vector>
 using namespace std;
 
+/**
+ * @struct Union-Find tree
+ * @fn UnionFind(N) コンストラクタ 0~Nまで自身が親の木を作成
+ * @fn root(x) xの属する木の根を返却
+ * @fn unite(x, y) xとyの属する木を結合(同じ木に属する場合は何もしない)
+ * @fn same(x, y) xとyが同じ木に属するかどうかのbool値返却
+ * @usage 適宜コンストラクタを変更
+ */ 
 struct UnionFind {
   vector<int> par;
 

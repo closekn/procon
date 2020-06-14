@@ -5,7 +5,7 @@ using namespace std;
 //-- nCr = v[n][r] の 記憶配列作成
 /**
  * @fn nにおけるコンビネーション結果を作成
- * @bref nCrにおける指定nに対する各rの記憶配列作成 (nCr = v[n][r])
+ * @brief nCrにおける指定nに対する各rの記憶配列作成 (nCr = v[n][r])
  * @param (n) nCrにおけるn
  * @return nCr = v[n][r] となるv
  */

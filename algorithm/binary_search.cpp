@@ -1,7 +1,7 @@
 
 /**
  * @fn 二分探索法
- * @bref ソート済配列に対してkey以上を満たす最小のindexを捜索
+ * @brief ソート済配列に対してkey以上を満たす最小のindexを捜索
  * @param (arr) 探索対象のソート済配列
  * @param (n) arrサイズ
  * @return key以上を満たす最小のindex (どのindexも適さない場合はn)
