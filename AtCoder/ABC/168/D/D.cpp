@@ -1,27 +1,21 @@
-#include <iostream>
-#include <queue>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 #define INF 1e+9
-#define MAX_V 10
+#define MAX_V 400001
 
 struct edge {
   int to;
   int cost;
 };
 
-using P = pair<int, int>; // <最短距離, 頂点の番号>
+using P = pair<int, int>;
 
-int V;                  // ノード数
-vector<edge> G[MAX_V];  // グラフ
-int d[MAX_V];           // sから各頂点までの距離
+int V;
+vector<edge> G[MAX_V];
+int d[MAX_V];
+int frm[MAX_V];
 
-/**
- * @fn ダイクストラ
- * @brief 上記変数'd'に各始点から各終点までの距離格納
- * @param (s) 始点ノード
- */
 void dijkstra(int s) {
   priority_queue<P, vector<P>, greater<P> > que;
   fill(d, d+V, INF);
@@ -38,8 +32,32 @@ void dijkstra(int s) {
       edge e = G[v][i];
       if ( d[e.to] > d[v] + e.cost ) {
         d[e.to] = d[v] + e.cost;
+        frm[e.to] = v;
         que.push(P(d[e.to], e.to));
       }
     }
   }
+}
+
+int main() {
+  int m;
+  cin >> V >> m;
+  for ( int i = 0; i < m; i++ ) {
+    int a, b;
+    cin >> a >> b;
+    a--; b--;
+    edge ea, eb;
+    ea.to = b; ea.cost = 1;
+    eb.to = a; eb.cost = 1;
+    G[a].push_back(ea);
+    G[b].push_back(eb);
+  }
+
+  dijkstra(0);
+
+  cout << "Yes" << endl;
+  for ( int i = 1; i < V; i++ ) {
+    cout << frm[i]+1 << endl;
+  }
+  return 0;
 }
