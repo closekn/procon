@@ -1,16 +1,6 @@
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-/**
- * @struct Union-Find tree
- * @fn UnionFind(N) コンストラクタ 0~Nまで自身が親の木を作成
- * @fn root(x) xの属する木の根を返却
- * @fn unite(x, y) xとyの属する木を結合(同じ木に属する場合は何もしない)
- * @fn size(x) xの属する木の要素数返却
- * @fn same(x, y) xとyが同じ木に属するかどうかのbool値返却
- * @usage 適宜コンストラクタを変更
- */ 
 struct UnionFind {
   vector<int> par;
   vector<int> siz;
@@ -43,3 +33,31 @@ struct UnionFind {
     return rx == ry;
   }
 };
+
+int main() {
+  int n, m, k;
+  cin >> n >> m >> k;
+  UnionFind tree(n+1);
+  vector<int> cant_fre(n+1, 1);
+  for ( int i = 0; i < m; i++ ) {
+    int a, b;
+    cin >> a >> b;
+    tree.unite(a, b);
+    cant_fre[a]++;
+    cant_fre[b]++;
+  }
+  for ( int i = 0; i < k; i++ ) {
+    int c, d;
+    cin >> c >> d;
+    if ( tree.same(c, d) ) {
+      cant_fre[c]++;
+      cant_fre[d]++;
+    }
+  }
+
+  for ( int i = 1; i <= n; i++ ) {
+    cout << tree.size(i)-cant_fre[i] << ' ';
+  }
+  cout << endl;
+  return 0;
+}
