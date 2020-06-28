@@ -17,7 +17,4 @@ AtCoder参加記録
 - JSC (Japan Student Championship)
 - PAST (アルゴリズム実技検定)
 - company (company's contest)
-  - M_SOLUTIONS
-  - diverta_programming_contest
-  - NIKKEI (National uniform programming king)
-  - tokiomarine (東京海上日動プログラミングコンテスト)
+- Marathon (マラソンコンテスト)
