@@ -2,8 +2,8 @@
 #include <vector>
 using namespace std;
 
-int INF = 1e+9;
-#define MAX_V 300
+int INF = 1e9 + 7;
+#define MAX_V 512
 
 struct edge {
   int to;
@@ -21,7 +21,7 @@ int d[MAX_V][MAX_V];    // 第一添字頂点から第二添字頂点までの�
 void warshall_floyd() {
   // 初期経路
   for ( int i = 0; i < V; i++ ) {
-    fill(d, d+V, INF);
+    fill(d[i], d[i]+V, INF);
     d[i][i] = 0;
     for ( int j = 0; j < G[i].size(); j++ ) {
       edge e = G[i][j];
