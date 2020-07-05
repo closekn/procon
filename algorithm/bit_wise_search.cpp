@@ -9,7 +9,7 @@ const int N = 12 // num
  * @brief 部分集合を全パターン列挙し調査
  */
 void bit_wise_search() {
-  for ( int bit; bit < (1<<N); bit++ ) {
+  for ( int bit = 0; bit < (1<<N); bit++ ) {
     for ( int i = 0; i < N; i++ ) {
       if ( bit & (1<<i) ) {
         // do
