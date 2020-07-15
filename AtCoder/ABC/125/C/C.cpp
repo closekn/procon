@@ -1,33 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int gcd(int a, int b) {
+  if ( a == 0 ) { return b; }
+  if ( b == 0 ) { return a; }
+  int tmp;
+  while ( a%b != 0 ) {
+    tmp = b;
+    b = a % b;
+    a = tmp;
+  }
+  return b;
+}
+
 int main() {
-  int n, n2;
+  int n;
   cin >> n;
-  n2 = n/2;
-  int a[n], a2[n2], max = 0, tmp;
-  bool flag = false;
-  for ( int i = 0; i < n; i++ ) { cin >> a[i]; }
-  for ( int i = 0; i < n2; i++ ) {
-    if ( i == n2-1 && n%2 == 1 ) {
-      a2[i] = a[2*i]; flag = true;
-    }
-    a2[i] = __gcd(a[2*i], a[2*i+1]);
-  }
-
+  int a[n];
   for ( int i = 0; i < n; i++ ) {
-    if ( i = n-1 && n%2 == 1 ) {
-      tmp = a[0];
-    } else {
-      tmp = ( i%2 == 0 ) ? a[i+1] : a[i-1];
-    }
-    for ( int k = 0; k < n2; k++ ) {
-      if ( k == i/2 ) { continue; }
-      tmp = __gcd(tmp, a2[k]);
-    }
-    max = ( tmp > max ) ? tmp : max;
+    cin >> a[i];
   }
 
-  cout << max << endl;
+  vector<int> left(n+1), right(n+1);
+  left[0] = right[n] = 0;
+  for ( int i = 0; i < n; i++ ) {
+    left[i+1] = gcd(left[i], a[i]);
+  }
+  for ( int i = n-1; i >= 0; i-- ) {
+    right[i] = gcd(right[i+1], a[i]);
+  }
+
+  int ans = 0;
+  for ( int i = 0; i < n; i++ ) {
+    int gcd_without_i = gcd(left[i], right[i+1]);
+    if ( gcd_without_i > ans ) { ans = gcd_without_i; }
+  }
+  cout << ans << endl;
   return 0;
 }
