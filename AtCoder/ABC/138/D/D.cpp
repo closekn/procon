@@ -1,52 +1,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> par;
-vector<vector<int> > chi;
+const int NODE_MAX = 200000;
+vector<int> tree[NODE_MAX+1];
 
-void root(int x, int k) {
-  chi[x].push_back(k);
-  if (par[x] == x) return;
-  root(par[x], k);
+void dfs(int my, int par, vector<long long> &ct) {
+  ct[my] += ct[par];
+  for ( int i = 0; i < tree[my].size(); i++ ) {
+    if ( tree[my][i] == par ) { continue; }
+    dfs(tree[my][i], my, ct);
+  }
 }
 
 int main() {
   int n, q;
   cin >> n >> q;
-  int a[n-1], b[n-1];
-  int p[q], x[q];
+
+  tree[0].push_back(1);
   for ( int i = 0; i < n-1; i++ ) {
-    cin >> a[i] >> b[i];
+    int a, b;
+    cin >> a >> b;
+    tree[a].push_back(b);
+    tree[b].push_back(a);
   }
-  for ( int i = 0; i < q; i++ ) {
-    cin >> p[i] >> x[i];
-  }
-
-  int ct[n+1];
-  par.push_back(0);
-  for ( int i = 0; i < n+1; i++ ) {
-    ct[i] = 0;
-    par.push_back(0);
-    vector<int> tmp;
-    chi.push_back(tmp);
+  
+  vector<long long> ct(n+1, 0);
+  while ( q-- > 0 ) {
+    int p, x;
+    cin >> p >> x;
+    ct[p] += x;
   }
 
-  par[1] = 1;
-  for ( int i = 0; i < n-1; i++ ) {
-    par[b[i]] = a[i];
-  }
+  dfs(1, 0, ct);
 
-  for ( int i = 1; i < n+1; i++ ) {
-    root(i, i);
+  for ( int i = 1; i <= n; i++ ) {
+    cout << ct[i] << ' ';
   }
-
-  for ( int t = 0; t < q; t++ ) {
-    for ( int i = 0; i < chi[p[t]].size(); i++ ) {
-      ct[chi[p[t]][i]] += x[t];
-    }
-  }
-
-  for ( int i = 1; i < n; i++ ) { cout << ct[i] << ' '; }
-  cout << ct[n] << endl;
+  cout << endl;
   return 0;
 }

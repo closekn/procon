@@ -12,29 +12,21 @@ ll gcd(ll a, ll b) {
   return b;
 }
 
-bool isPrime(ll x) {
-  for ( ll i = 2; i * i <= x; i++ ) {
-    if ( x%i == 0 ) { return false; }
+map<ll, int> prime_factor(ll n) {
+  map<ll, int> ret;
+  for (ll i = 2; i * i <= n; i++)  {
+    while ( n % i == 0 ) {
+      ret[i]++;
+      n /= i;
+    }
   }
-  return true;
+  if ( n != 1 ) { ret[n] = 1; }
+  return ret;
 }
 
 int main() {
   ll a, b;
   cin >> a >> b;
-  ll m = gcd(a, b);
-  ll ans = 0;
-
-  ll rootm = (ll) sqrt(m);
-
-  for ( ll i = 1; i <= sqrt(m); i++ ) {
-    if ( !isPrime(i) ) { continue; }
-    if ( m%i != 0 ) { continue; }
-    ans++;
-    if ( m/i == i ) { continue; }
-    if ( isPrime(m/i) ) { ans++; }
-  }
-
-  cout << ans << endl;
+  cout << prime_factor(gcd(a, b)).size() + 1 << endl;
   return 0;
 }
