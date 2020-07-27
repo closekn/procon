@@ -1,49 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+struct change {
+  int b;
+  long long c;
+};
+bool operator < (const change &l, const change &r) { return l.c < r.c; }
+bool operator > (const change &l, const change &r) { return l.c > r.c; }
  
 int main() {
   int n, m;
-  long long sum = 0;
   cin >> n >> m;
-  int a[n], b[m], c[m];
-  bool ch[m];
-  for ( int i = 0; i < n; i++ ) {
-    cin >> a[i];
-  }
-  for ( int i = 0; i < m; i++ ) {
-    cin >> b[i] >> c[i];
-    ch[i] = true;
-  }
-  sort(a, a + n);
- 
-  bool flag = true;
-  int an = 0;
-  while ( flag ) {
-    int max = 0, p = 0;
-    for ( int i = 0; i < m; i++ ) {
-      if ( max <= c[i] && ch[i] ) {
-        p = i;
-        max = c[i];
-      }
-    }
-    ch[p] = false;
-    for ( int i = 0 ; i < b[p]; i++ ) {
-      if ( a[an] >= max ) {
-        flag = false;
-        break;
-      }
-      a[an++] = max;
-      if ( an >= n ) {
-        flag = false;
-        break;
-      }
-    }
-  }
- 
-  for ( int i = 0; i < n; i++) {
-    sum += a[i];
-  }
+  long long a[n];
+  change st[m];
+  for ( int i = 0; i < n; i++ ) { cin >> a[i]; }
+  for ( int i = 0; i < m; i++ ) { cin >> st[i].b >> st[i].c; }
+  sort(a, a+n);
+  sort(st, st+m, greater<change>());
   
-  cout << sum << endl;
+  long long ans = 0;
+  int cur = 0;
+  for ( int k = 0; k < m && cur < n; k++ ) {
+    if ( cur+st[k].b-1 >= n && a[n-1] < st[k].c ) {
+      ans += st[k].c * (n-cur);
+      cur = n;
+    } else if ( cur+st[k].b-1 < n && a[cur+st[k].b-1] < st[k].c ) {
+      ans += st[k].c * st[k].b;
+      cur += st[k].b;
+    } else if ( a[cur] < st[k].c ) {
+      while ( a[cur] < st[k].c && st[k].b > 0 ) {
+        ans += st[k].c;
+        cur++;
+        st[k].b--;
+        if ( cur >= n ) { break; }
+      }
+    } else {
+      break;
+    }
+  }
+  for ( int i = cur; i < n; i++ ) { ans += a[i]; }
+
+  cout << ans << endl;
   return 0;
 }
