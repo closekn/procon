@@ -7,34 +7,40 @@ int main() {
   string s, t;
   cin >> s;
   cin >> t;
-  int len = s.length();
+  s += s;
 
-  for ( int i = 0; i < 26; i++ ) {
-    vector<int> tmp;
-    num.push_back(tmp);
-  }
-  for ( int i = 0; i < len; i++ ) {
-    num[s[i]-'a'].push_back(i);
-  }
-
-  long long ans = 1;
-  int np = 0;
-  for ( int i = 0; i < t.length(); i++ ) {
-    int tm = t[i]-'a';
-    if ( num[tm].size() == 0 ) { ans = -1; break; }
-    for ( int k = 0; k < num[tm].size(); k++ ) {
-      if ( np >= num[tm][k] ) {
-        if ( k == num[tm].size()-1 ) {
-          ans += len+num[tm][0]-np;
-          np = num[tm][0];
-          break;
-        }
-        continue;
-      }
-      ans += num[tm][k]-np;
-      np = num[tm][k];
-      break;
+  bool can = true;
+  int n = s.size();
+  int next_ch[n][26];
+  for ( int ci = 0; ci < 26; ci++ ) {
+    char c = 'a'+ci;
+    if ( t.find(c) == string::npos ) { continue; }
+    int si = 0;
+    string::size_type p = s.find(c);
+    if ( p == string::npos ) { can = false; break; }
+    int first_pos = p;
+    while ( p != string::npos ) {
+      for ( ; si < p; si++ ) { next_ch[si][ci] = p; }
+      p = s.find(c, p+1);
     }
+    for ( ; si < n; si++ ) { next_ch[si][ci] = first_pos; }
+  }
+
+  long long ans;
+  if ( can ) {
+    ans = s.find(t[0]);
+    for ( int i = 1; i < t.size(); i++ ) {
+      int c = t[i]-'a';
+      int spos = ans%n;
+      if ( spos < next_ch[spos][c] ) {
+        ans += next_ch[spos][c] - spos;
+      } else {
+        ans += (n-spos) + next_ch[spos][c];
+      }
+    }
+    ans++;
+  } else {
+    ans = -1;
   }
 
   cout << ans << endl;
