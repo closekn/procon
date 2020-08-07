@@ -1,19 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main() {
-  string s;
-  cin >> s;
-  long long l = stoi(s, 0, 2);
+const long long mod = 1e9 + 7;
 
-  int ct = 0;
-  for ( int a = 0; a <= l/2; a++ ) {
-    for ( int b = a; a+b <= l; b++ ) {
-      ct += ( a^b == a+b ) ? 1 : 0;
-      ct %= 1000000007;
+int main() {
+  string l;
+  cin >> l;
+  int n = l.size();
+
+  long long dp[n+1][2];
+  dp[0][0] = 1;
+  dp[0][1] = 0;
+  for ( int i = 0; i < n; i++ ) {
+    if ( l[i] == '1' ) {
+      dp[i+1][1] = (dp[i][1] * 3 + dp[i][0]) % mod;
+      dp[i+1][0] = (dp[i][0] * 2) % mod;
+    }
+    if ( l[i] == '0' ) {
+      dp[i+1][0] = dp[i][0];
+      dp[i+1][1] = (dp[i][1] * 3) % mod;
     }
   }
 
-  cout << ct << endl;
+  cout << (dp[n][0] + dp[n][1]) % mod << endl;
   return 0;
 }
