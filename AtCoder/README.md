@@ -14,6 +14,7 @@ AtCoder参加記録
 
 - ABC (AtCoder Beginner Contest)
 - AGC (AtCoder Grand Contest)
+- ARC (AtCoder Regular Contest)
 - ACL (AtCoder Library Contest)
 - JSC (Japan Student Championship)
 - PAST (アルゴリズム実技検定)
