@@ -19,4 +19,3 @@ AtCoder参加記録
 - JSC (Japan Student Championship)
 - PAST (アルゴリズム実技検定)
 - company (company's contest)
-- Marathon (マラソンコンテスト)
